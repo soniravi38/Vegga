@@ -1,0 +1,7 @@
+G:\New\education\Vegga\Web\DAL\bin\Release\DAL.dll.config
+G:\New\education\Vegga\Web\DAL\bin\Release\DAL.dll
+G:\New\education\Vegga\Web\DAL\bin\Release\DAL.pdb
+G:\New\education\Vegga\Web\DAL\obj\Release\DAL.csprojAssemblyReference.cache
+G:\New\education\Vegga\Web\DAL\obj\Release\DAL.csproj.CoreCompileInputs.cache
+G:\New\education\Vegga\Web\DAL\obj\Release\DAL.dll
+G:\New\education\Vegga\Web\DAL\obj\Release\DAL.pdb

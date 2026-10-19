@@ -1,0 +1,49 @@
+﻿.ListPageArea {
+    width: 100% !important;
+}
+
+    .ListPageArea th {
+        height: 35px !important;
+        text-align: center !important;
+        font-size: 11pt !important;
+    }
+
+    .ListPageArea td {
+        height: 30px !important;
+        text-align: center !important;
+        font-size: 11pt !important;
+    }
+
+        .ListPageArea tr:hover {
+            background-color: #367fa9 !important;
+            cursor:pointer !important;
+            color:white !important;
+        }
+
+.btnSearch {
+    margin-left: -33px !important;
+}
+
+.PagerStyle {
+    background-color: #1e282c !important;
+}
+
+    .PagerStyle tr td span {
+        margin-left: 5px !important;
+        background-color: #367fa9;
+        color: white !important;
+        padding: 0px 6px 0px 6px !important;
+    }
+
+    .PagerStyle a {
+        color: white !important;
+        margin-left: 5px !important
+    }
+
+        .PagerStyle a:hover {
+            color: #6ec2f2 !important;
+        }
+
+.alert {
+    padding: 3px !important;
+}

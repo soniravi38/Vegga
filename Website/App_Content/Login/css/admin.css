@@ -1,0 +1,69 @@
+﻿body {
+}
+#HeadingWrapper {
+    background:#1D2B36;
+    color:white;
+    font-family:'Futura Md BT';
+    font-weight:bold;
+    font-size:12pt;
+    padding:15px;
+    text-transform:uppercase;
+}
+#ContentWrapper {
+    min-height:470px;
+    margin-top:0px;
+   border:1px #1D2B36 solid; 
+    color:#1D2B36;
+    font-family:'Futura Md BT';
+    font-size:13pt;
+    padding:20px;
+}
+.btnsubmit
+{
+    background:#1D2B36;
+    color:white;
+    border:none;
+    font-size:12pt;
+}
+th
+{
+    background:#1D2B36;
+    color:white;
+}
+.btnsubmit:hover
+{
+   background:white;
+    color:#1D2B36 !important;
+    border:1px solid #1D2B36;
+    transition:0.8s;
+}
+th
+{
+    padding:8px !important;
+    text-align:center;
+   
+}
+
+td
+{
+    padding:8px !important;
+}
+
+ tr:hover
+        {
+            border:none;
+            background-color: #1D2B36 !important;
+            color:white !important;
+            cursor:pointer;
+        }
+ .ListPageArea
+ {
+     min-width:100%;
+ }
+@media (max-width:768px) {
+.colon
+{
+    display:none;
+}
+}
+

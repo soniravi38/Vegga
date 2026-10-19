@@ -1,0 +1,659 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="Web_MasterPage" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+<%@ Import Namespace="System.Data" %>
+<%@ Import Namespace="System.Data.SqlClient" %>
+<% DataTable dtCompany = new DataTable(); %>
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Buy Gemstones & Rudraksha Online</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-language" content="en-us" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+
+    <script src="../html5shiv.googlecode.com/svn/trunk/html5.html"></script>
+    <link rel="icon" href="../App_Content/Web/media/favicon/default/logo.ico" type="image/x-icon" />
+    <link rel="shortcut icon" runat="server" id="imgCompanyShortLogo" type="image/x-icon" />
+    <link href="../App_Content/Web/skin/frontend/vola/default/css/font-awesome.css" type="text/css" rel="stylesheet" />
+    <link href="../stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../App_Content/Web/media/css_secure/87b6d4112744351c2ba381c222650f1d.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="../App_Content/Web/media/css_secure/8e3d0ed0e4c9922b4ba7bbf77986bcf3.css" media="print" />
+    <script type="text/javascript" src="../App_Content/Web/media/js/3078ab6177db3d2520ed346df9d623f0.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="../App_Content/Web/skin/frontend/vola/default/css/themeColorcff1.css?p=1" media="all" />
+    <style>
+        body {
+            background-image: url(media/magic/bg/default/body-bg.jpg);
+            background-repeat: repeat;
+            background-size: none;
+            background-attachment: scroll;
+            background-position: center center;
+        }
+
+        .highlighterWrap {
+            background-repeat:;
+            background-size: cover;
+            background-attachment: scroll;
+            background-position: center center;
+        }
+
+        /*start blue theme*/
+        .copyrightBox,.header-top, button.button span, .proImage .qv-btn, .add-cart, .add-cart, a.add-cart, .w-btn, .thirdView a.add-cart, .thirdView .add-cart, .header-top, button.button span, .button, .axcart, .classy a, .thirdView a.add-cart, .thirdView .add-cart, .msg-block .button-newsletter, .qlinks .w-btn:hover, .direction, .ui-rangeSlider-label, .actions.mdl_layered_clear_all:hover, .actions.mdl_layered_clear_all:hover a, .proImage .qv-btn, .pro-static-block li div, #triggerPop:hover, .opc-wrapper-opc .btn-checkout span, .opc-wrapper-opc .btn-checkout span span, .opc-wrapper-opc .payment-block dt, .review-menu-block a.review-total, .opc-wrapper-opc .discount-block .button span, .opc-wrapper-opc .discount-block .button span span, #nextslide:hover, #prevslide:hover,.productbtn
+        {
+            background-color:#0a1357 !important;
+        }
+        .points, .points a, h2, .sepArea h3, .footer-wrapper h3,.aboutUsSection h3
+        {
+            color:#0a1357 !important;
+        }
+        .searchCenter .form-search, .productbtn
+        {
+            border:1px solid #0a1357 !important;
+        }
+        .blogItem h3
+        {
+            color:blue !important;
+        }
+        /*end blue theme*/
+        @media only screen and (max-width: 768px) {
+            .points
+            {
+                margin:auto;
+                margin-top:7% !important;
+            }
+
+            .form-search
+            {
+                display:none !important;
+            }
+
+            .slide_container
+            {
+                height:330px !important;
+            }
+
+            #lblFooter
+            {
+                text-align:center !important;
+                margin:auto !important;
+            }
+
+            .contactUs
+            {
+                width:100% !important;
+            }
+
+            .ContactUs1
+            {
+                padding-top:5% !important;
+            }
+
+             .HeaderImage
+            {
+                height:100px !important;
+            }
+        }
+    </style>
+     <script>
+	jQuery(document).ready(function(){
+		var fixedNav = 1;
+		if(fixedNav ==1){
+			jQuery(".fixNavBox").sticky({ topSpacing:0, className: 'fixit'});
+		}
+	});
+</script>  
+    <script type="text/javascript">
+    var contactForm = new VarienForm('contactForm', false);
+    jQuery(document).ready(function(){
+         SideNavi.init('right', {
+            container : '#sideNavi',
+            defaultitem : '.side-navi-item-default',
+            item : '.side-navi-item',
+            data : '.side-navi-data',
+            tab : '.side-navi-tab',
+            active : '.active' 
+        });
+     });
+ </script>           
+<script type="text/javascript">
+var $jq = jQuery.noConflict();
+	jQuery(document).ready(function()
+	{
+		    var _SlideshowTransitions = 
+			[
+				{$Duration:1200,$Opacity:2}
+			];
+			var _CaptionTransitions = [];
+		    // Caption1 
+						_CaptionTransitions["caption1"] =  {$Duration:500, $Clip:3,$FlyDirection:8,$Easing:$JssorEasing$.$EaseInCubic,$ScaleVertical:0.6,$Opacity:2};
+						
+			// Caption2
+						_CaptionTransitions["caption2"] =  {$Duration:500, $Zoom:1,$Easing:$JssorEasing$.$EaseInCubic,$Opacity:2};
+						
+			// Caption3
+						_CaptionTransitions["caption3"] =  {$Duration:500, $FlyDirection:2,$Easing:{$Left:$JssorEasing$.$EaseInOutSine},$ScaleHorizontal:0.6,$Opacity:2};
+						
+			// Caption4
+						_CaptionTransitions["caption4"] =  {$Duration:500, $Clip:3,$FlyDirection:8,$Easing:$JssorEasing$.$EaseInCubic,$ScaleVertical:0.6,$Opacity:2};
+						
+			// Caption5
+						
+			// Caption Image 1
+						_CaptionTransitions["caption-img1"] =  {$Duration:500, $Zoom:1,$Easing:$JssorEasing$.$EaseInCubic,$Opacity:2};
+						
+			// Caption Image 2
+						_CaptionTransitions["caption-img2"] = {$Duration:500, $Zoom:1,$Easing:$JssorEasing$.$EaseInCubic,$Opacity:2};
+						
+            var options = 
+			{
+				<!--------------------------- SLIDE OPTION ------------------------>
+                <!------------- DYNAMIC APPEAR FROM ADMIN START ------------------->
+ 				$AutoPlay: true,  //[Optional] Whether to auto play, to enable slideshow, this option must be set to true, default value is false
+				
+
+$AutoPlayInterval: 2000,//[Optional] Interval (in milliseconds) to go for next slide since the previous stopped if the slider is auto playing, default value is 3000
+				$PauseOnHover: 2,//[Optional] Whether to pause when mouse over if a slider is auto playing, 0 no pause, 1 pause for desktop, 2 pause for touch device, 3 pause for desktop and touch device, default value is 1
+				// DYNAMIC PAUSE ON HOVER
+                $ArrowKeyNavigation: true,//[Optional] Allows keyboard (arrow key) navigation or not, default value is false
+                //$SlideEasing: $JssorEasing$.$EaseOutQuint,//[Optional] Specifies easing for right to left animation, default value is $JssorEasing$.$EaseOutQuad
+				$SlideDuration: 500,//[Optional] Specifies default duration (swipe) for slide in milliseconds, default value is 500
+				$MinDragOffsetToSlide: 20,//[Optional] Minimum drag offset to trigger slide , default value is 20
+                $DragOrientation:3,//[Optional] Orientation to drag slide, 0 no drag, 1 horizental, 2 vertical, 3 either, default value is 1 (Note that the $DragOrientation should be the same as $PlayOrientation when $DisplayPieces is greater than 1, or parking position is not 0)
+			    $PlayOrientation: 1,//[Optional] Orientation to play slide (for auto play, navigation), 1 horizental, 2 vertical, 5 horizental reverse, 6 vertical reverse, default value is 1
+				<!------------- DYNAMIC APPEAR FROM ADMIN END ------------------->
+				
+				
+				$AutoPlaySteps: 1,//[Optional] Steps to go for each navigation request (this options applys only when slideshow disabled), the default value is 1                
+                $SlideSpacing: 0,//[Optional] Space between each slide in pixels, default value is 0
+                $DisplayPieces: 1,//[Optional] Number of pieces to display (the slideshow would be disabled if the value is set to greater than 1), the default value is 1
+                $ParkingPosition: 0,//[Optional] The offset position to park slide (this options applys only when slideshow disabled), default value is 0.
+                $UISearchMode: 1,//[Optional] The way (0 parellel, 1 recursive, default value is 1) to search UI components (slides container, loading screen, navigator container, arrow navigator container, thumbnail navigator container etc).
+               
+                
+                $SlideshowOptions: 
+				{   
+				
+					$Class: $JssorSlideshowRunner$,//[Required] Class to create instance of slideshow
+                    $Transitions: _SlideshowTransitions,//[Required] An array of slideshow transitions to play slideshow
+                    <!------------- DYNAMIC APPEAR FROM ADMIN START ------------------->
+					$TransitionsOrder:1,//[Optional] The way to choose transition to play slide, 1 Sequence, 0 Random
+                    $ShowLink: true //[Optional] Whether to bring slide link on top of the slider when slideshow is running, default value is false
+					<!------------- DYNAMIC APPEAR FROM ADMIN END ------------------->
+                },
+
+                $CaptionSliderOptions: 
+				{ 
+				    $Class: $JssorCaptionSlider$,//[Required] Class to create instance to animate caption
+                    $CaptionTransitions: _CaptionTransitions,//[Required] An array of caption transitions to play caption, see caption transition section at jssor slideshow transition builder
+					<!------------- DYNAMIC APPEAR FROM ADMIN START ------------------->
+                    $PlayInMode: 1,//[Optional] 0 None (no play), 1 Chain (goes after main slide), 3 Chain Flatten (goes after main slide and flatten all caption animations), default value is 1
+                    $PlayOutMode: 3 //[Optional] 0 None (no play), 1 Chain (goes before main slide), 3 Chain Flatten (goes before main slide and flatten all caption animations), default value is 1
+					<!------------- DYNAMIC APPEAR FROM ADMIN END ------------------->
+                },
+
+                $ArrowNavigatorOptions: 
+				{                      
+                    $Class: $JssorArrowNavigator$,
+					$Transitions: _SlideshowTransitions, 
+					<!------------- DYNAMIC APPEAR FROM ADMIN START ------------------->  
+                    $ChanceToShow: 2,//[Required] 0 Never, 1 Mouse Over, 2 Always
+                    $AutoCenter: 2,//[Optional] Auto center arrows in parent container, 0 No, 1 Horizontal, 2 Vertical, 3 Both, default value is 0
+					<!------------- DYNAMIC APPEAR FROM ADMIN END ------------------->
+                    $Steps: 1//[Optional] Steps to go for each navigation request, default value is 1
+                },
+
+                $BulletNavigatorOptions: 
+				{                         
+					$Class: $JssorBulletNavigator$,
+					$Transitions: _SlideshowTransitions,   
+					<!------------- DYNAMIC APPEAR FROM ADMIN START ------------------->  
+                    $ChanceToShow: 0,//[Required] 0 Never, 1 Mouse Over, 2 Always
+                    $AutoCenter: 1, //[Optional] Auto center navigator in parent container, 0 None, 1 Horizontal, 2 Vertical, 3 Both, default value is 0
+					<!------------- DYNAMIC APPEAR FROM ADMIN END ------------------->  
+                    $Steps: 1,//[Optional] Steps to go for each navigation request, default value is 1
+                    $Lanes: 1,//[Optional] Specify lanes to arrange items, default value is 1
+                    $SpacingX: 4,//[Optional] Horizontal space between each item in pixel, default value is 0
+                    $SpacingY: 4,//[Optional] Vertical space between each item in pixel, default value is 0
+                    $Orientation: 1//[Optional] The orientation of the navigator, 1 horizontal, 2 vertical, default value is 1
+                }
+            };
+			
+			
+            var jssor_slider1 = new $JssorSlider$("slider1_container", options);
+			function ScaleSlider() 
+			{
+				var parentWidth = jssor_slider1.$Elmt.parentNode.clientWidth;
+    			if (parentWidth)
+        			jssor_slider1.$SetScaleWidth(parentWidth);
+    			else
+        			$JssorUtils$.$Delay(ScaleSlider, 30);
+            	}
+           		ScaleSlider();
+		   		$JssorUtils$.$AddEvent(window, "load", ScaleSlider);
+		   		if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
+    				$JssorUtils$.$OnWindowResize(window, ScaleSlider);
+		   		}
+         })
+	</script>
+     <script type="text/javascript">
+			(function($) {	
+			$('.scroller-brand').owlCarousel({
+					loop:true,
+					smartSpeed: 500,
+					dots: false,
+					dotsContainer: false,
+					margin:10,
+					navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>" ],
+					responsiveClass:true,
+										autoplay: true,
+					autoplayTimeout: 5000,
+										responsive:{
+						0:{
+							items:2,
+							nav: true
+						},
+						600:{
+							items:4,
+							nav: true
+						},
+						1000:{
+							items:5,
+							nav: true,
+							loop:true
+						}
+					}
+				})
+			})(jQuery);			
+		</script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body id="bg_color" class="header2 headerfix cms-index-index cms-vola-home-page">
+    <form runat="server">
+        <asp:ScriptManager runat="server"></asp:ScriptManager>
+        <div class="wrapper bType2">
+            <div class="page">
+                <div class="header-container f-fix mainHeaderPan header-wrapper01 bannerType2">
+                    <div class="f-fix header-top">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-9 col-sm-9 col-md-6  top-info">
+                                    <div class="call">
+                                        <i class="fa fa-phone-square" aria-hidden="true"></i>
+                                        <a id="acrStripMobile" href="tel:+918010555111" runat="server"><b style="font-size: 14px;">
+                                            <asp:Label ID="lblStripMobile" runat="server" Text=""></asp:Label>
+                                        </b></a>
+                                        &nbsp; <a style="font-size: 14px; color: white; margin-left: 257px; padding: 2px; display: none">&nbsp;
+                                    || ॐ सर्वे भवन्तु सुखिनः || &nbsp;</a>&nbsp;
+                                    </div>
+                                </div>
+                                <div class="col-xs-3 col-sm-3 col-md-6 alignRight socialHeader" style="display: none">
+                                    <div class="topLinks">
+                                        <ul class="links ul-left">
+                                            <li class="first"><a href="customer/account/index.html" title="My Account">My Account</a></li>
+                                            <li class=" last"><a href="customer/account/login/index.html" title="Log In">Log In</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="topLinkMenu">
+                                        <a class="tpMenu" href="javascript:void(0);"><i class="fa fa-bars"></i></a>
+                                        <div id="tpInner" style="display: none;" class="tpm-inner">
+                                            <ul class="links ul-left">
+                                                <li class="first"><a href="customer/account/index.html" title="My Account">My Account</a></li>
+                                                <li class=" last"><a href="customer/account/login/index.html" title="Log In">Log In</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-2 cartright">
+                                        <div class="block-cart header_cart">
+                                            <div class="block-content_pan">
+                                                <div class="summary">
+                                                    <h2 class="classy openCart ">cart <a href="checkout/cart/index.html">0</a><i class="fa fa-sort-down"></i>
+                                                    </h2>
+                                                </div>
+                                                <div class="remain_cart" id="minicart">
+                                                    <div class="minicartInner">
+                                                        <div class="shopping-bag f-block">
+                                                            <p class="empty">You have no items in your shopping cart.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="header_currency">
+                                        <div class="currency_box">
+                                            <div class="currency_pan">
+                                                <i class="hideIcon fa fa-money"></i>
+                                                <span>Currency  &#x20b9; - INR </span>
+                                                <i class="fa fa-sort-down"></i>
+                                            </div>
+                                            <div class="currency_detail">
+                                                <div class="currency-inner">
+                                                    <a title="Australian Dollar" class="currency_icon  " href="directory/currency/switch/currency/AUD/uenc/aHR0cHM6Ly9zaHViaGdlbXMuaW4v/index.html" onclick="setLocation(this.value);">
+                                                        <img src="../App_Content/Web/media/flag/AUD.jpg" title="Australian Dollar - AUD" alt="Australian Dollar - AUD" width="20" height="17" />
+                                                        A$ <span>- Australian Dollar</span></a>
+                                                    <a title="British Pound Sterling" class="currency_icon  " href="directory/currency/switch/currency/GBP/uenc/aHR0cHM6Ly9zaHViaGdlbXMuaW4v/index.html" onclick="setLocation(this.value);">
+                                                        <img src="../App_Content/Web/media/flag/GBP.jpg" title="British Pound Sterling - GBP" alt="British Pound Sterling - GBP" width="20" height="17" />
+                                                        £ <span>- British Pound Sterling</span></a>
+                                                    <a title="Canadian Dollar" class="currency_icon  " href="directory/currency/switch/currency/CAD/uenc/aHR0cHM6Ly9zaHViaGdlbXMuaW4v/index.html" onclick="setLocation(this.value);">
+                                                        <img src="../App_Content/Web/media/flag/CAD.jpg" title="Canadian Dollar - CAD" alt="Canadian Dollar - CAD" width="20" height="17" />
+                                                        CA$ <span>- Canadian Dollar</span></a>
+                                                    <a title="Euro" class="currency_icon  " href="directory/currency/switch/currency/EUR/uenc/aHR0cHM6Ly9zaHViaGdlbXMuaW4v/index.html" onclick="setLocation(this.value);">
+                                                        <img src="../App_Content/Web/media/flag/EUR.jpg" title="Euro - EUR" alt="Euro - EUR" width="20" height="17" />
+                                                        € <span>- Euro</span></a>
+                                                    <a title="Indian Rupee" class="currency_icon   selected" href="directory/currency/switch/currency/INR/uenc/aHR0cHM6Ly9zaHViaGdlbXMuaW4v/index.html" onclick="setLocation(this.value);">
+                                                        <img src="../App_Content/Web/media/flag/INR.jpg" title="Indian Rupee - INR" alt="Indian Rupee - INR" width="20" height="17" />
+                                                        &#x20b9; <span>- Indian Rupee</span></a>
+                                                    <a title="US Dollar" class="currency_icon  " href="directory/currency/switch/currency/USD/uenc/aHR0cHM6Ly9zaHViaGdlbXMuaW4v/index.html" onclick="setLocation(this.value);">
+                                                        <img src="../App_Content/Web/media/flag/USD.jpg" title="US Dollar - USD" alt="US Dollar - USD" width="20" height="17" />
+                                                        $ <span>- US Dollar</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="header-block f-fix">
+                        <header class="container">
+                            <div class="headerMid">
+                                <div class="col-xs-12 col-sm-3 logo-block">
+                                    <h1 class="logo" style="padding-top: 1px">
+                                        <a href="Default.aspx" id="acrLogo" runat="server" title="Shubh Gems" class="logo">
+                                            <asp:Image Height="100px" ID="imgCompanyLogo" runat="server" alt="" />
+                                        </a>
+                                    </h1>
+                                </div>
+                                <div class="col-xs-12 col-sm-7 searchCenter">
+                                    <div class="points">
+                                        <p>
+                                            <i class="fa fa-certificate">&nbsp;Certified Natural Gemstones</i>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <i class="fa fa-shield">&nbsp;100% Purity Guaranteed</i>
+                                        </p>
+                                        <p>
+                                            <i class="fa fa-check-circle">20 Years of Trust</i>
+                                            &nbsp;&nbsp;<i class="fa fa-plane">&nbsp;Worldwide Shipping</i>
+                                            &nbsp;&nbsp;<i class="fa fa-phone-square">&nbsp; <a href="ContactUs.aspx">24x7 Customer Support</a></i>
+                                        </p>
+                                    </div>
+                                    
+                                        <div class="form-search">
+                                            <input id="search" placeholder="Search by Product..." type="text" name="q" value="" class="input-text" maxlength="128" />
+                                            <button type="submit" title="Search" class="button"><span><span><i class="fa fa-search"></i></span></span></button>
+                                            <div id="search_autocomplete" class="search-autocomplete"></div>
+                                        </div>
+                                  
+                                </div>
+                            </div>
+                        </header>
+                        <div class="navMain fixNavBox">
+                            <div class="container mobCan">
+                                <div class="nav-wrapper">
+                                    <div class="nav-container">
+                                        <div class="mobMenu span12">
+                                            <h1>
+                                                <span>Menu</span>
+                                                <a href="javascript:void(0);" class="menuBox highlight"><i class="fa fa-align-justify"></i></a>
+                                                <span class="clearfix"></span>
+                                            </h1>
+                                            <div style="display: none;" id="menuInnner">
+                                                <ul class="accordion">
+                                                    <asp:Repeater ID="repMenu1" runat="server">
+                                                        <ItemTemplate>
+                                                            <li class="level0 nav-1 first level-top">
+                                                                <a href='<%# Eval("href") %>' class="level-top"><span>
+                                                                    <asp:Label ID="lblMenuName1" runat="server" Text='<%# Eval("Menu") %>'></asp:Label>
+                                                                </span></a>
+                                                            </li>
+                                                        </ItemTemplate>
+                                                    </asp:Repeater>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <ul id="nav">
+                                            <li class="home hicon level0">
+                                                <a href="index.html">
+                                                    <!-- <i class="fa fa-home" style="font-size: 22px;"></i>-->
+                                                </a>
+                                            </li>
+                                            <asp:Repeater ID="repMenu2" runat="server">
+                                                <ItemTemplate>
+                                                    <li class="level0 nav-1 first  level-top megamenu">
+                                                        <a href='<%# Eval("href") %>'><span>
+                                                            <asp:Label ID="lblMenuName1" runat="server" Text='<%# Eval("Menu") %>'></asp:Label></span></a>
+                                                    </li>
+                                                </ItemTemplate>
+                                            </asp:Repeater>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+                <footer>
+                    <section class="f-block footer-wrapper">
+                        <div class="container">
+                            <div class="areaBox f-block">
+                                <div class="col-sm-12 col-md-8">
+                                    <div class="row">
+                                        <div class="links col-sm-4">
+                                            <h3>Menu Categories</h3>
+                                            <ul>
+                                                <asp:Repeater ID="repMenu3" runat="server">
+                                                    <ItemTemplate>
+                                                        <li><a title='<%# Eval("Menu") %>' href='<%# Eval("href") %>'><%# Eval("Menu") %></a></li>
+                                                    </ItemTemplate>
+                                                </asp:Repeater>
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <h3>Our Map</h3>
+                                            <ul>
+                                                <iframe id="CompanyMap" runat="server" width="90%" height="280" frameborder="0" style="border: 0" allowfullscreen></iframe>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-4">
+                                    <h3>Address</h3>
+                                    <div itemprop="address" style="color: #a27113;">
+                                        <p>
+                                            <asp:Label ID="lblCompanyAddress" runat="server" Text=""></asp:Label><br />
+                                            Email : <asp:Label ID="lblFooterEmail" runat="server" Text=""></asp:Label><br />
+                                             Phone : <asp:Label ID="lblFooterPhone" runat="server" Text=""></asp:Label><br />
+                                            Mobile : <asp:Label ID="lblFooterMobile" runat="server" Text=""></asp:Label>
+                                           
+                                        </p>
+                                    </div>
+                                    <h3>Post Your Query</h3>
+                                    <p>
+                                        <div id="messages_product_view"></div>
+
+                                        <div class="fieldset" style="margin-top: -12px;">
+                                            <ul class="form-list">
+                                                <li class="fields">
+                                                    <div class="field">
+                                                        <div class="input-box">
+                                                            <asp:TextBox ID="txtQueryName" autocomplete="off" CssClass="input-text required-entry validate-alpha" placeholder="Your Name" runat="server"></asp:TextBox>
+                                                            <asp:RequiredFieldValidator ControlToValidate="txtQueryName" ID="rfvQueryName" runat="server"
+                                                                Display="Dynamic" ErrorMessage="Please Enter Name !" SetFocusOnError="True"
+                                                                ValidationGroup="query">
+                                                                Please Enter Name
+                                                            </asp:RequiredFieldValidator>
+                                                        </div>
+                                                    </div>
+                                                    <div class="field">
+                                                        <div class="input-box">
+                                                            <asp:TextBox ID="txtQueryEmail" autocomplete="off" CssClass="input-text required-entry validate-alpha" placeholder="Your E-Mail" runat="server"></asp:TextBox>
+                                                            <asp:RequiredFieldValidator ControlToValidate="txtQueryEmail" ID="rfvQueryEmail" runat="server"
+                                                                Display="Dynamic" ErrorMessage="Please Enter Name !" SetFocusOnError="True"
+                                                                ValidationGroup="query">
+                                                                Please Enter Email
+                                                            </asp:RequiredFieldValidator>
+                                                            <asp:RegularExpressionValidator ControlToValidate="txtQueryEmail" ID="revQueryEmail" runat="server" ValidationExpression="^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
+                                                                Display="Dynamic" ValidationGroup="query" ErrorMessage="InValid PAN Card" SetFocusOnError="True">
+                                                                Please Enter Valid Email
+                                                            </asp:RegularExpressionValidator>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="field">
+                                                        <div class="input-box">
+                                                            <asp:TextBox ID="txtQueryNumber" autocomplete="off" MaxLength="10" CssClass="input-text required-entry validate-alpha" placeholder="Your Number" runat="server"></asp:TextBox>
+                                                            <cc1:FilteredTextBoxExtender TargetControlID="txtQueryNumber" ID="txtQueryNumber_FilteredTextBoxExtender" runat="server" Enabled="True" FilterType="Numbers"></cc1:FilteredTextBoxExtender>
+                                                            <asp:RequiredFieldValidator ControlToValidate="txtQueryNumber" ID="rfvQueryNumber" runat="server"
+                                                                Display="Dynamic" ErrorMessage="Please Enter Name !" SetFocusOnError="True"
+                                                                ValidationGroup="query">
+                                                                Please Enter Number
+                                                            </asp:RequiredFieldValidator>
+                                                            <asp:RegularExpressionValidator ControlToValidate="txtQueryNumber" ID="revQueryNumber" runat="server" ValidationExpression="[0-9]{10}"
+                                                                Display="Dynamic" ValidationGroup="query" ErrorMessage="InValid PAN Card" SetFocusOnError="True">
+                                                                Please Enter Valid Mobile Number
+                                                            </asp:RegularExpressionValidator>
+                                                        </div>
+                                                    </div>
+                                                    <div class="field">
+                                                        <div class="input-box">
+                                                            <asp:TextBox ID="txtQueryLocation" autocomplete="off" CssClass="input-text required-entry validate-alpha" placeholder="Your Location" runat="server"></asp:TextBox>
+                                                            <asp:RequiredFieldValidator ControlToValidate="txtQueryLocation" ID="rfvQueryLocation" runat="server"
+                                                                Display="Dynamic" ErrorMessage="Please Enter Name !" SetFocusOnError="True"
+                                                                ValidationGroup="query">
+                                                                Please Enter Location
+                                                            </asp:RequiredFieldValidator>
+                                                        </div>
+                                                    </div>
+                                                    <li class="wide">
+                                                        <asp:TextBox ID="txtQueryQuery" autocomplete="off" CssClass="input-text required-entry validate-alpha" TextMode="MultiLine" placeholder="Type Your Query Here..." runat="server"></asp:TextBox>
+                                                        <asp:RequiredFieldValidator ControlToValidate="txtQueryQuery" ID="rfvQueryQuery" runat="server"
+                                                            Display="Dynamic" ErrorMessage="Please Enter Name !" SetFocusOnError="True"
+                                                            ValidationGroup="query">
+                                                                Please Enter Your Query
+                                                        </asp:RequiredFieldValidator>
+                                                    </li>
+                                                </li>
+                                        </div>
+                                        <div class="buttons-set" style="float: left">
+                                            <asp:Button ID="btnQuerySubmit" CssClass="button" OnClick="btnQuerySubmit_Click" ValidationGroup="query" runat="server" Text="Submit" />
+                                        </div>
+                                   
+                                </p>
+                            </div>
+                    </section>
+
+                    <div class="copyrightBox f-block">
+                        <div class="container">
+                            <div style="float: left;">
+                                <ul class="mdl-social">
+                                    <li class="facebook">
+                                        <a id="FooterFacebook" runat="server" title="Facebook" target="_blank">
+                                            <i class="fa fa-facebook"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a id="FooterInstagram" runat="server" title="Instagram" target="_blank">
+                                            <i class="fa fa-instagram"></i>
+                                        </a>
+                                    </li>
+                                      <li>
+                                        <a id="FooterTwitter" runat="server" title="Twitter" target="_blank">
+                                            <i class="fa fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                      <li>
+                                        <a id="FooterGooglePlus" runat="server" title="GooglePlus" target="_blank">
+                                            <i class="fa fa-google-plus"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a id="FooterLinkdin" runat="server" title="Linkdin" target="_blank">
+                                            <i class="fa fa-linkedin"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <p></p>
+                            </div>
+                            <div style="float: right">
+                                <div class="media-payment">
+                                    <p class="copyText" style="font-size: 11pt;">
+                                        <asp:Label ID="lblFooter" runat="server" Text=""></asp:Label>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer-keywords" style="display: none">
+                        <p><strong>Gemstone </strong>-&nbsp; <a title="Gemstone Name" href="gemstones.html" target="_self">Gemstone Name</a>, <a title="Gemstone List" href="gemstones.html">Gemstone List</a>, <a href="gemstones.html">Certified Gemstones</a>, <a href="gemstones.html">Natural Gemstone</a>, <a href="gemstones.html">Gemstone&nbsp; Color</a>, <a href="gemstones.html">Gemstone Cut</a>, <a href="blog/how-to-check-if-gemstone-is-real.html" target="_self">Where to Buy Gemstone</a>, <a href="blog/tips-to-wear-your-lucky-gemstone.html">Gemstones for Astrology</a>, <a href="blog/tips-to-wear-your-lucky-gemstone.html">Gemstone Benefits</a>, <a href="blog/tips-to-wear-your-lucky-gemstone.html">Wear Gemstone for Benefits</a>, <a href="gemstones.html">Buy Gemstone Online</a>, <a href="gemstones.html">Precious Stone</a>, &nbsp;<a href="gemstones.html">Semi Precious Stone</a>, <a href="gemstones.html">Gemstone Shop in Delhi</a>, <a href="gemstones.html">Gemstone Dealer</a>, <a href="gemstones.html">Best Quality Gemstone</a>, <a href="gemstones.html">Gemstone Name</a>, <a href="gemstones.html">Know Gemstones</a>, <a href="gemstones.html">Buy Gemstone in Delhi</a>,&nbsp; <a href="gemstones.html">Astrological Gemstones</a>, <a href="gemstones.html">Gemstone Shop in South Delhi</a>, <a href="gemstones.html">Gemstone Wholesale</a>, <a href="gemstones.html">Authentic Gemstone Shop</a>, <a href="blog/how-to-check-if-gemstone-is-real.html" target="_self">Real Gemstone</a>, <a href="gemstones.html">Original Gemstone</a>,<a href="http://gjionline.com/gem-testing-laboratory.html">Gemstone Identification</a>, <a href="http://gjionline.com/">Gem Testing</a>, <a href="blog/Gemstone-Hardness-Durability.html">Gemstone Hardness</a>, <a href="gemstones.html">Gemstone Properties</a>, <a href="gemstones.html">Where Gemsones are Found</a>, <a href="gemstones.html">Best Gem Stone Mines</a>, <a href="gemstones.html">Gemstone Substitute</a>, <a href="blog/how-to-check-if-gemstone-is-real.html" target="_self">What is Synthetic Gemstone</a>, <a href="blog/gemstone-treatments-detection-disclosure-of-treatments-in-gemstones/index.html">Gemstone Treatments</a>, <a href="blog/gemstone-treatments-detection-disclosure-of-treatments-in-gemstones/index.html">Non Treated Gemstone</a>, <a href="blog/gemstone-treatments-detection-disclosure-of-treatments-in-gemstones/index.html">Un-treated Gemstone</a>, <a href="blog/tips-to-buy-astrological-gemstones.html">Gemstone Guide</a>, <a href="http://gjionline.com/jewellery-valuation-appraisal.html">Gemstone Valuation</a> , <a href="blog/significance-of-weight-inclusions-and-color-of-gemstone-in-astrology/index.html">Gemstone Inclusions</a>, <a href="http://gjionline.com/gem-testing-laboratory.html">Gemstone Testing</a></p>
+                        <p><strong>Gemstone List </strong>&ndash; <a title="Buy Yellow Sapphire stone online" href="yellow-sapphire.html">Yellow Sapphire (Pukhraj)</a>, <a title="Buy Celyon sri lanka Yellow Sapphire stone online" href="buy-ceylon-sri-lanka-yellow-sapphire-stone.html">Sri Lanka Pukhraj</a>, <a title="Buy Blue Sapphire Online in Delhi" href="blue-sapphire.html">Blue Sapphire (Neelam)</a>, <a title="Buy Celyon sri lanka Blue Sapphire stone online" href="buy-ceylon-sri-lanka-blue-sapphire-stone.html">Ceylon Sapphire</a>, <a title="Buy Emerald Stone Online " href="emerald.html">Emerald (Panna)</a>, <a title="Buy Zambian origin Emerald Stone Online " href="buy-zambian-emerald-stone-online.html">Zambian Emerald</a>, <a title="Buy columbian emerald stone online " href="emerald.html">Columbian Emerald</a>, <a title="Buy Ruby stone online" href="ruby.html">Ruby (Manik)</a>, <a title="Buy Pearl Online in Delhi" href="pearl.html">Pearl (Moti)</a>, <a title="Buy South sea pearl online in Delhi" href="pearl.html">South Sea Pearl</a>, <a title="Buy Opal Stone online in Delhi" href="opal.html">Opal</a>, <a title="Buy Fire Opal Stone online in Delhi" href="red-coral-moonga-italian-quality-price-benefits-astrology.html">Fire Opal</a>, <a title="Buy White Opal Stone" href="opal.html">White Opal</a>, <a title="Hessonite stone online" href="hessonite.html">Hessonite Garnet (Gomedh)</a>,<a title="Buy Diamond Stone online" href="diamond.html"> Diamond (Heera)</a>, <a title="Buy White Sapphire Stone online" href="white-sapphire.html">White Sapphire (White Pukhraj),</a> <a title="Buy Natural Peridot Stone Online" href="peridot.html">Peridot</a>, <a title="Online Tanzanite stone online in Delhi" href="tanzanite.html">Tanzanite</a>, <a title="Buy tourmaline stone online in Delhi" href="tourmaline.html">Tourmaline</a>, <a href="tourmaline.html" target="_self">Rubellite</a>, <a title="Buy aquamarine Stone online in Delhi" href="aquamarine.html">Aquamarine</a>, <a title="Buy Amber stone in Delhi" href="amber.html">Amber</a>, <a title="Buy Moonstone  Online In Delhi" href="moon-stone.html">Moonstone</a>, <a title="Buy Blue topaz stone online" href="blue-topaz.html">Blue Topaz</a>, <a href="citrine">Yellow Topaz</a>,&nbsp; <a title="Buy white topaz stone online in Delhi" href="white-topaz.html">White Topaz</a>, Golden Topaz, <a title="Buy natural zircon online in Delhi" href="zircon.html">Zircon</a>, <a title="Buy Morganite stone in Delhi" href="morganite.html">Morganite</a>, <a title="Buy Citrine Stone Online In Delhi" href="citrine">Citrine</a>, <a title="Buy turquoise stone in Delhi " href="turquoise.html">Turquoise</a>, <a href="pink-sapphire.html" target="_blank">Pink Sapphire</a>, <a title="Purple Sapphire online in Delhi" href="purple-sapphire.html">Purple Sapphire</a>, <a title="Buy Natural Star sapphire Online In Delhi" href="star-sapphire.html">Star Sapphire</a>, <a title="Buy Amethyst Stone online in Delhi" href="amethyst.html">Amethyst</a>, <a title="Buy red coral Stone online in Delhi" href="coral.html">Red Cora</a>l, <a title="Buy natural gemstone online in Delhi" href="coral.html">White Coral</a>, <a title="Buy Cat's Eye Stone Online in Delhi" href="cats-eye.html">Cat&rsquo;s Eye</a>, <a title="Buy Tiger's Eye stone online in Delhi" href="tigers-eye.html">Tiger Eye</a>, <a href="ruby.html">Star Ruby</a> , <a href="blue-sapphire.html">Neelam Stone</a> , <a href="yellow-sapphire.html">Pukhraj Stone</a> , <a href="shubhgems.in/emerald.html">Panna Stone</a> , <a href="coral.html">Moonga Stone</a> , <a href="parti-colored-sapphire.html">Pitambari Stone</a> , <a href="purple-sapphire.html">Khooni Neelam</a></p>
+                        <p><strong>Healing Crystal</strong> &ndash; <a title="Buy healing stone online in Delhi" href="healing-crystals.html">Buy Healing Crystal</a>, <a href="blog/know-healing-crystals/index.html" target="_self">Crystal Healing</a>, <a href="healing-crystals.html">Crystal Benefits</a>, <a href="healing-crystals.html">Natural Crystal Price</a>,&nbsp; <a href="healing-crystals.html">Healing Crystal in Delhi</a>, <a href="healing-crystals.html">Healing Crystal in India</a>, <a href="blog/know-healing-crystals/index.html" target="_self">Chakra Healing</a></p>
+                        <p><strong>Healing Crystal List</strong> &ndash; <a href="agate.html">Natural Quartz</a>, <a href="agate.html">Agate</a>, <a href="rutilated-quartz.html">Rutilated Quartz</a>, <a href="prehnite.html">Prehnite</a>, <a href="smoky-quartz.html">Smoky Quartz</a>, <a href="jade.html">Jade</a>, <a href="malachite.html">Malachite</a>, <a href="labradorite.html">Labradorite</a>, <a href="lapis-lazuli.html">Lapis Lazuli</a>, <a href="onyx.html">Green Onyx</a>, <a href="onyx.html">Black Onyx</a>, <a href="jasper.html">Jasper</a>, <a href="fire-agate.html">Fire Agate</a>, <a href="carnelian.html">Carnelian</a>, <a href="sunstone.html">Sunstone</a>, <a href="sodalite.html">Sodalite</a>, <a href="sunstone.html">Sunstone</a>, <a href="chrysocolla.html">Chyrsocolla</a>, <a href="aventurine-quartz.html">Aventurine Quartz</a>, <a href="blood-stone">Bloodstone</a></p>
+                        <p><strong>Jewellery </strong>&ndash; <a href="jewellery.html">Gemstone Jewellery</a>, <a href="jewellery.html">Silver Jewellery</a>, <a href="rings.html">Gemstone Ring</a>, <a href="pendant.html">Gemstone Pendant,</a> <a href="bracelet.html">Gemstone Bracelet</a>,&nbsp; <a href="jewellery.html">Healing stone Jewellery</a>, <a href="pendant.html">Healing stone Pendant,</a> <a href="pendant.html">Healing Crystal Pendant</a>, <a href="customized.html">Customized Jewellery</a>, <a href="gemstone-ring-designs.html">Ring Designs</a>, <a href="jewellery.html">Jewellery Shop in Delhi</a>, <a href="jewellery.html">Diamond Jewellery</a>, <a href="jewellery.html">Jewellery Shop in South Delhi</a>, <a href="http://gjionline.com/jewellery-valuation-appraisal.html">Jewellery Valuation</a>, <a href="http://gjionline.com/jewellery-valuation-appraisal.html">Jewellery Appraisal</a>, <a href="http://gjionline.com/jewellery-valuation-appraisal.html">Jewellery Testing</a></p>
+                        <p><strong>Beads </strong>&ndash; <a href="gemstone-beads.html">Gemstone Beads</a>, <a href="gemstone-beads.html">Precious stone Beads</a>, <a href="gemstone-beads.html">Semi Precious stone Beads</a>, <a href="gemstone-beads.html">Round stone beads</a>, <a href="gemstone-beads.html">Natural stone Beads</a></p>
+                        <p><strong>Vastu, Feng Shui &amp; Lucky Charms </strong>&ndash; <a href="lucky-charms.html">Gemstone Tree</a>, <a href="lucky-charms.html">Shree Yanta</a>, <a href="lucky-charms.html">Rock Salt Lamp</a>, <a href="lucky-charms.html">Pyramid</a>, <a href="lucky-charms.html">Tortoise</a>, <a href="lucky-charms.html">Buddha</a>, <a href="lucky-charms.html">Statue</a>, <a href="lucky-charms.html">Ganesha</a>, <a href="rudraksha.html">Rudraksha</a></p>
+                        <p><strong>Astrology</strong> &ndash; <a href="astrology.html">Vedic Astrology</a>, <a href="astrology.html">Best Astrologer in Delhi</a>, <a href="astrology.html">Famous Astrologer in India,</a> <a href="astrology.html">Astrological Consultation</a>, <a href="astrology.html">Consult Astrologer</a>, <a href="astrology.html">Vedic Astrologer</a>, <a href="astrology.html">Astrologer on call</a>, <a href="astrology.html">Astrologer appointment</a>, &nbsp;<a href="astro-advice.html">Birth Chart</a>, <a href="astro-advice.html">Kundali</a>, <a href="astro-advice.html">Birthstone</a>, <a href="astro-advice.html">Astrologer online, </a></p>
+                        <p><strong>Consultation</strong> &ndash; <a href="astro-advice.html">Astrological Consultation, </a><a href="astro-advice.html">Gemstone Advice</a>, <a href="astro-advice.html">Consult Gemologist</a>, <a href="http://gjionline.com/buy-gemstones-jewellery.html">Gemologist in Delhi</a>, <a href="astro-advice.html">Gemstone Expert</a>, <a href="astro-advice.html">Gemstone Recommendation</a>, <a href="astro-advice.html">Gem Consultation</a>,<a href="astro-advice.html"> Astrologer Consultation</a>, &nbsp;<a href="tips-to-buy.html">Tips to buy gemstone, Gem Testing Laboratory, Gemstone Identification</a></p>
+                        <p><strong>Horoscope</strong> &ndash;<a href="horoscope.html"> Online Horoscope</a>,<a href="horoscope.html"> Daily Horoscope</a>, <a href="horoscope.html">Horoscope 2017</a>, <a href="horoscope.html">Free Horoscope</a>, <a href="horoscope.html">Horoscope Astrology</a>, <a href="astro-advice.html">Gemstone as per Horoscope</a>, <a href="horoscope.html">My Horoscope,</a> <a href="horoscope.html">Horoscope Consultation</a>, <a href="horoscope.html">Match Making</a></p>
+                        <p><strong>Panchang</strong> &ndash; <a href="panchang.html">Online Panchang</a>, <a href="panchang.html">Daily Panchang</a>, <a href="panchang.html">Drik Panchang</a>, <a href="panchang.html">Today&rsquo;s Panchang</a>, <a href="panchang.html">My Panchang</a>,</p>
+                        <p><strong>Price</strong> &ndash; <a href="tips-to-buy.html">Gemstone Price per Carat</a>, <a href="tips-to-buy.html">Gemstone price per Ratti</a>, <a href="tips-to-buy.html">Gemstone at best price</a>, <a href="tips-to-buy.html">Diamond Price per Carat</a>, <a href="tips-to-buy.html">Diamond Solitaire per Carat</a>, <a href="tips-to-buy.html">Gold Price</a>,<a href="tips-to-buy.html"> Today Gold Rate</a>, <a href="tips-to-buy.html">Gold rate per Tola</a>, <a href="tips-to-buy.html">Price in Delhi</a>, <a href="tips-to-buy.html">Price in India</a>, <a href="blog/confused-between-diamond-moissanite.html">Moissanite Price</a></p>
+                        <p><strong>Weight</strong> &ndash; <a href="blog/gemstone-weight-calculations.html">Gemstone Weight,</a> <a href="blog/gemstone-weight-calculations.html">Carat weight</a>, <a href="tips-to-buy.html">Price per Carat</a>, <a href="tips-to-buy.html">Price per Ratti</a>, <a href="tips-to-buy.html">Price per Gram</a>, <a href="tips-to-buy.html">Carat vs Karat</a>, <a href="blog/significance-of-weight-inclusions-and-color-of-gemstone-in-astrology/index.html">how many Ratti to wear</a>, <a href="weight-calculator.html">Gemstone Weight Converter</a></p>
+                    </div>
+
+                     <%{
+       DataTable dt = new DataTable();
+       cls_connection cls=new cls_connection ();
+       dt = cls.select_data_dt("select * from CompanyMaster");
+       DataRow[] dr = dt.Select();
+        %>
+                    <!-- WhatsHelp.io widget -->
+                    <script type="text/javascript">
+                        (function () {
+                            var options = {
+                                whatsapp: "+91-<% Response.Write(dr[0]["WhatsappMobile"]); %>", // WhatsApp number
+                                email: "<% Response.Write(dr[0]["Email1"]); %>", // Email
+                                sms: "+91-<% Response.Write(dr[0]["Mobile1"]); %>", // Sms phone number
+                                call:  "+91-<% Response.Write(dr[0]["Mobile1"]); %>", // Call phone number
+                                company_logo_url: "", // URL of company logo (png, jpg, gif)
+                                greeting_message: "Connect with Gem Experts. Message us for any assistance.", // Text of greeting message
+                                call_to_action: "Message us", // Call to action
+                                button_color: "#E74339", // Color of button
+                                position: "left", // Position may be 'right' or 'left'
+                                order: "whatsapp,sms,call,email,facebook" // Order of buttons
+                            };
+                            var proto = document.location.protocol, host = "whatshelp.io", url = proto + "//static." + host;
+                            var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
+                            s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
+                            var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+                        })();
+                    </script>
+                     <%}%>
+                    <!-- /WhatsHelp.io widget -->
+                </footer>
+            </div>
+        </div>
+        <div class="mdl-overlay" id="mdl-overlay" style="display: none;">&nbsp;</div>
+
+        <div style="display: none; width: 260px; height: 80px; top: 550px;" class="mdlajax-progress" id="mdl_ajax_progress">
+            &nbsp;
+        </div>
+        <div class="mdl-loading-data" id="mdl-loading-data" style="display: none;">
+            <i class="fa fa-spinner fa-spin"></i>
+            <p>loading...</p>
+        </div>
+
+        <div style="display: none; width: 420px; height: 150px; position: fixed; top: 496px;" class="mdlajax-confirm" id="mdl_ajax_confirm">
+            &nbsp;
+        </div>
+
+        <div id="mdl-temp-div" style="display: none;"></div>
+        <div class="clearfix"></div>
+        <script src="../App_Content/Web/js/sociallogin/sociallogin.js" type="text/javascript"></script>
+    </form>
+</body>
+</html>

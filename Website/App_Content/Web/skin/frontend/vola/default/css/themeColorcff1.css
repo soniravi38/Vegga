@@ -1,0 +1,230 @@
+
+
+
+
+/*color-settings*/
+
+	    
+		.header-top,
+	button.button span, 
+	.button, 
+	.axcart,
+	.classy a,
+	.thirdView a.add-cart, 
+	.thirdView .add-cart,
+	.msg-block .button-newsletter,
+	.qlinks .w-btn:hover,
+	.direction,
+	.ui-rangeSlider-label,
+	.actions.mdl_layered_clear_all:hover, .actions.mdl_layered_clear_all:hover a,
+	.proImage .qv-btn,
+	.pro-static-block li div,
+	#triggerPop:hover,
+	.opc-wrapper-opc .btn-checkout span,
+	.opc-wrapper-opc .btn-checkout span span,
+	.opc-wrapper-opc .payment-block dt,
+	.review-menu-block a.review-total,
+	.opc-wrapper-opc .discount-block .button span,
+	.opc-wrapper-opc .discount-block .button span span,
+	#nextslide:hover, #prevslide:hover
+    {
+    	background-color:#990100;
+    }
+    
+	.qlinks .w-btn,
+	.owl-nav .owl-next:hover, 
+	.owl-nav .owl-prev:hover,
+	.mdl-social li a:hover,
+	#cart-sidebar .btn-pencil,
+	.add-cart, .link-cart, .w-btn,
+	.twitter-twets li:before,
+	.sorter .view-mode .grid, .sorter .view-mode .list,
+	.cart-action .link-edit,
+	.cartDeta6 .fa,
+	.add-cart:hover, .link-cart:hover, .w-btn:hover,
+	.opc-wrapper-opc .opc-login-trigger:hover, 
+	.review-menu-block a.review-total:hover, 
+	.review-menu-block a.review-total.open,
+	.expand_plus,
+	.discount-block h3:hover .expand_plus, .signature-block h3:hover .expand_plus, .comment-block h3:hover .expand_plus, .giftcard h3:hover .expand_plus, .discount-block h3.open-block .expand_plus, .signature-block h3.open-block .expand_plus, .comment-block h3.open-block .expand_plus, .giftcard h3.open-block .expand_plus,
+	.twitter-twets li a, .price,
+	.language_detail a.selected, 
+	.currency_detail a.selected, 
+	.compare-content a.selected, 
+	.language_detail a:hover, 
+	.currency_detail a:hover, 
+	.compare-content a:hover,
+	.links h3:before,
+	.mobMenu h1 a,
+	.mobMenu .accordion em.open-close:before,
+	ul#nav li.active > a,
+	ul#nav li.level0 ul.level0 li:hover > a
+    {
+    	color:#990100;
+    }
+    
+	.mdl-social li a:hover,
+	.add-cart:hover, 
+	.link-cart:hover, 
+	.w-btn:hover,
+	.block-content .currently li span.value,
+	.ui-rangeSlider-bar,
+	.data-table > li .button-b,
+	ul#configurable_swatch_color li a:hover, 
+	ul.configurable-swatch-list li a:hover
+    {
+    	border-color:#990100;
+    }
+    
+   
+	
+	.footer-wrapper .links li:before
+	{
+   	 border-left-color:#990100;
+    }
+    
+	.ui-rangeSlider-label-inner
+    {
+   	 border-top-color:#990100;
+    }
+	.bestselling-title h2 span.active
+	 {
+   	 border-bottom-color:#990100;
+    }
+    
+        
+    
+    
+    /*body font*/
+        
+    /*body anchore color*/
+        
+        
+    /*breadcrumb*/
+        
+        
+    /*block heading*/
+        
+	
+	
+    /*new sele*/
+        
+        
+        
+    
+
+
+
+/*Header color*/
+	    .header-top{background-color:#990100;}
+        
+        
+         
+    
+        
+
+
+/*Navigation color*/
+
+	    	ul#nav li.level0 > a,
+        .header3 ul#nav li.level0 > a,
+		.bannerType1 ul#nav li.level0 > a,
+		.bannerType1 .fixit ul#nav li.level0 > a
+		{color:#ad791f;}
+        
+        	 ul#nav li.level0 > a:hover,
+        .header3 ul#nav li.level0 > a:hover, 
+        .header3.cms-index-index ul#nav li.home.level0 > a, 
+        .header3 ul#nav li.level0.active > a, 
+        .header3 ul#nav li.level0.over > a, 
+        .cms-index-index ul#nav li.home.level0 > a, 
+        ul#nav li.level0.active > a, 
+        ul#nav li.level0.over > a,
+		.bannerType1 .fixit ul#nav li.level0 > a:hover
+        {color:#990100;}
+        
+        
+        
+        
+        	ul#nav li.level0 ul.level0 li a{color:#ad791f;}
+        
+        
+        	.fixit .navMain.fixNavBox,
+		.bannerType1 .fixit .navMain
+        {background-color:#ffffff;}
+        
+
+
+/*Mobile navigation color*/
+	    
+        
+        
+    	
+		
+	    
+        
+    
+
+/*Button color*/
+        	button.button span,
+        .proImage .qv-btn, .add-cart,
+		.add-cart, a.add-cart, .w-btn,
+		.thirdView a.add-cart, 
+		.thirdView .add-cart
+        {background-color:#990100;}
+        
+    
+		
+    
+        	button.button:hover span,
+        .proImage .qv-btn:hover, .add-cart:hover,
+		.w-btn:hover, .w-btn:hover .fa,
+		.secView .add-cart:hover, .secView a.add-cart:hover, .secView .w-btn:hover,
+		button.button:hover span, .button:hover, .axcart:hover, .thirdView a.add-cart:hover, .thirdView .add-cart:hover,
+		.qlinks .w-btn:hover
+        {background-color:#ad791f;}
+        
+        	button.button:hover span,
+        .proImage .qv-btn:hover, .add-cart:hover,
+		.w-btn:hover, .w-btn:hover .fa,
+		.secView .add-cart:hover, .secView a.add-cart:hover, .secView .w-btn:hover,
+		.secView .add-cart:hover .fa, .secView a.add-cart:hover .fa, .secView .w-btn:hover .fa,
+		.thirdView a.add-cart:hover, .thirdView .add-cart:hover
+        {color:#ffffff;}
+    	
+		
+
+	
+	
+/*Price color*/
+        
+        
+        
+    
+
+/*Footer color*/
+
+	    
+    	
+	    
+        
+        	.footer-wrapper h3
+        {color:#990100;}
+        
+         	.footer-wrapper .links li a
+        {color:#a27113;}
+        
+    
+        	.footer-wrapper .links li a:hover
+        {color:#990100;}
+        
+    	
+	
+/*Newsletter Popup color*/
+
+		
+		
+		
+		
+		
+	

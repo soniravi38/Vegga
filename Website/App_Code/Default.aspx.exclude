@@ -1,0 +1,348 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="MasterPage.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="web_Default" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+<%@ Import Namespace="System.Data" %>
+<%@ Import Namespace="System.Data.SqlClient" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+</asp:Content>
+
+    <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <script src="web/Design/jquery-1.12.4.js"></script>
+    <%--<script src="web/Design/jquery-ui.min.js"></script>
+    <link href="web/Design/jquery-ui.css" rel="stylesheet" />--%>
+	<script src="cont/travel/js/vendor/bootstrap.min.js"></script>	
+    <link rel="stylesheet" href="cont/travel/css/bootstrap.css" />
+    <link href="cont/StyleSheet.css" rel="stylesheet" />
+    <script type="text/javascript">
+    $(window).on('load', function () {
+    $('#myModal').modal('show');
+    });
+    </script>
+
+    <script type="text/javascript">
+    $(document).ready(function () {
+    $('.txtCity').autocomplete({
+    source: 'Handler.ashx'
+    });
+    });
+    </script>
+      
+    <style>
+    .modal-content 
+     {
+     position: relative;
+     display: flex;
+     flex-direction: column;
+     width: 100% !important;
+     pointer-events: auto;
+     background-color: #fff;
+     background-clip: padding-box;
+     border: 1px solid rgba(0, 0, 0, 0.2);
+     border-radius: 0.3rem;
+     outline: 0;
+     left:0%;
+     }
+     .form-control
+     {
+     height: 52px !important;
+     background: white !important;
+     color: black !important;
+     font-size: 18px;
+     border-radius: 0px;
+     -webkit-box-shadow: none !important;
+     box-shadow: none !important;
+     }
+     .banner-right .form-wrap .form-control
+     {
+     padding: 0.675rem 0.75rem;
+     font-size: 13px;
+     font-weight: 300;
+     border-radius: 0px;
+     margin-bottom: 10px;
+     border-color: transparent !important;
+     }
+     </style>
+
+    <%-- PageLoad Popup --%> 
+    <div id="myModal" class="modal fade" role="dialog" >
+    <div class="modal-dialog" >
+    <%{
+    DataTable dt1 = new DataTable();
+    cls_connection cls=new cls_connection ();
+    dt1 = cls.select_data_dt("select * from tblPopup");
+    DataRow[] dr1 = dt1.Select();
+    for (int i = 0; i < dr1.Length; i++)
+    { }%>
+    <div class="modal-content" style="background:url('<% Response.Write(dr1[0]["Picture"]); %>');height:400px">
+    <%}%>
+    <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    </div>
+    <div class="modal-body">
+    </div>
+    </div>
+    </div>
+    </div>
+   
+     <%-- Main Slider --%>
+     <section id="Home" class="home-slider owl-carousel" >
+     <asp:Repeater ID="repMainSlider" runat="server" >
+     <ItemTemplate>
+     <div class="slider-item" style="background-image: url('<%# "../../images/MainSlider/actual/"+ Eval("Picture")%>');">
+     <div class="overlay"></div>
+     <div class="container">
+     <div class="row slider-text align-items-center">
+     <div class="col-md-7 col-sm-12 ftco-animate">
+     <h1  class="mb-3"><asp:Label ID="Label1" runat="server" Text='<%# Eval("Header") %>'></asp:Label></h1>
+     </div>
+     </div>
+     </div>
+     </div>
+     </ItemTemplate>
+     </asp:Repeater>
+     </section>
+     
+       
+    
+     <%--Taxi Searching --%>
+     <section class=" relative" >
+     <div class="row align-items-center justify-content-between">
+     <div class="col-lg-4 col-md-6 banner-right search" style="right:5%;min-height:500px;position:absolute">
+     <ul class="nav nav-tabs" id="myTab" role="tablist">
+     <li class="nav-item">
+	 <a class="nav-link active" id="flight-tab" data-toggle="tab" href="#flight" role="tab" aria-controls="flight" aria-selected="true">One Way</a>
+	 </li>
+	 <li class="nav-item">
+	 <a class="nav-link" id="hotel-tab" data-toggle="tab" href="#hotel" role="tab" aria-controls="hotel" aria-selected="false">Round Trip</a>
+	 </li>
+	 <li class="nav-item">
+     <a class="nav-link" id="holiday-tab" data-toggle="tab" href="#holiday" role="tab" aria-controls="holiday" aria-selected="false">Packages</a>
+     </li>
+     </ul>
+     <%--<form runat="server">
+     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>--%>
+     <div class="tab-content" id="myTabContent">
+     <div class="tab-pane fade show active" id="flight" role="tabpanel" aria-labelledby="flight-tab">
+     <div class="form-wrap">
+     <asp:Label ID="lblMessage" runat="server" Text="" style="color:red;float:left"></asp:Label>
+     <asp:TextBox class="form-control txtCity" autocomplete="off" placeholder="Pick up" ID="txtOneSource" runat="server"></asp:TextBox>
+     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtOneSource" Display="Dynamic" ErrorMessage="Please Enter PickUp Location !" SetFocusOnError="True" ValidationGroup="ow" > <img style="position:absolute;margin-top:-11%;margin-left:32%" src="images/icon/error.png" /></asp:RequiredFieldValidator>
+     <asp:TextBox class="form-control txtCity date-picker" autocomplete="off" placeholder="Drop Off" ID="txtOneDestination" runat="server" ></asp:TextBox>
+     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtOneDestination" Display="Dynamic" ErrorMessage="Please Enter Drop Location !" SetFocusOnError="True" ValidationGroup="ow"><img style="position:absolute;margin-top:-11%;margin-left:32%" src="images/icon/error.png" /></asp:RequiredFieldValidator>
+     <asp:TextBox class="form-control date-picker" autocomplete="off" placeholder="Pickup Date" ID="txtOnePickupDate" runat="server" ></asp:TextBox>
+     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtOnePickupDate" Display="Dynamic" ErrorMessage="Please Enter Pickup Date!" SetFocusOnError="True" ValidationGroup="ow"><img style="position:absolute;margin-top:-11%;margin-left:32%" src="images/icon/error.png" /></asp:RequiredFieldValidator>    
+     <asp:DropDownList ID="ddlCountryCode" style="width:22%" CssClass="form-control" runat="server"></asp:DropDownList>
+     <asp:TextBox style="float:right;width:77%;margin-top:-62.5px" class="form-control mobile" autocomplete="off" placeholder="Mobile" ID="txtOneMobile" MaxLength="10" runat="server" ></asp:TextBox>
+     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtOneMobile" Display="Dynamic" ErrorMessage="Please Enter Mobile!" SetFocusOnError="True" ValidationGroup="ow"><img style="position:absolute;margin-top:-11%;margin-left:47%" src="images/icon/error.png" /></asp:RequiredFieldValidator>    
+     <cc1:FilteredTextBoxExtender ID="txtMobile_FilteredTextBoxExtender" runat="server" Enabled="True" FilterType="Numbers" TargetControlID="txtOneMobile"></cc1:FilteredTextBoxExtender>
+     <asp:Button ID="btnOneWay" ValidationGroup="ow" CssClass="primary-btn text-uppercase" runat="server" Text="search taxi" OnClick="btnOneWay_Click" /><br />
+     </div>
+	 </div>
+     <div class="tab-pane fade" id="hotel" role="tabpanel" aria-labelledby="hotel-tab">
+     <div class="form-wrap" >
+     <asp:Label ID="lblMessage1" runat="server" Text="" style="color:red;float:left"></asp:Label>
+     <asp:TextBox class="form-control txtCity" autocomplete="off" placeholder="Pick up" ID="txtRoundSource" runat="server"></asp:TextBox>
+     <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtRoundSource" Display="Dynamic" ErrorMessage="Please Enter PickUp Location !" SetFocusOnError="True" ValidationGroup="rw" > <img style="position:absolute;margin-top:-11%;margin-left:32%" src="images/icon/error.png" /></asp:RequiredFieldValidator>
+     <asp:TextBox class="form-control txtCity" autocomplete="off" placeholder="Drop Off" ID="txtRoundDestination" runat="server" ></asp:TextBox>
+     <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtRoundDestination" Display="Dynamic" ErrorMessage="Please Enter PickUp Location !" SetFocusOnError="True" ValidationGroup="rw" > <img style="position:absolute;margin-top:-11%;margin-left:32%" src="images/icon/error.png" /></asp:RequiredFieldValidator>
+     <asp:TextBox class="form-control date-picker" autocomplete="off" placeholder="Pickup Date" ID="txtRoundPickupDate" runat="server" ></asp:TextBox>
+     <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtRoundPickupDate" Display="Dynamic" ErrorMessage="Please Enter PickUp Location !" SetFocusOnError="True" ValidationGroup="rw" > <img style="position:absolute;margin-top:-11%;margin-left:32%" src="images/icon/error.png" /></asp:RequiredFieldValidator>
+     <asp:TextBox class="form-control date-picker" autocomplete="off" placeholder="Return Date" ID="txtRoundReturnDate" runat="server" ></asp:TextBox>
+     <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txtRoundReturnDate" Display="Dynamic" ErrorMessage="Please Enter PickUp Location !" SetFocusOnError="True" ValidationGroup="rw" > <img style="position:absolute;margin-top:-11%;margin-left:32%" src="images/icon/error.png" /></asp:RequiredFieldValidator>
+     <asp:DropDownList ID="ddlCountryCode1" style="width:22%" CssClass="form-control" runat="server"></asp:DropDownList>
+     <asp:TextBox style="float:right;width:77%;margin-top:-62.5px" class="form-control mobile" autocomplete="off" placeholder="Mobile" ID="txtRoundMobile" MaxLength="10" runat="server" ></asp:TextBox>
+     <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtRoundMobile" Display="Dynamic" ErrorMessage="Please Enter Mobile!" SetFocusOnError="True" ValidationGroup="rw"><img style="position:absolute;margin-top:-11%;margin-left:47%" src="images/icon/error.png" /></asp:RequiredFieldValidator>    
+     <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender1" runat="server" Enabled="True" FilterType="Numbers" TargetControlID="txtOneMobile"></cc1:FilteredTextBoxExtender>
+     <asp:Button ID="btnRoundWay" ValidationGroup="rw" CssClass="primary-btn text-uppercase" runat="server" Text="search taxi" OnClick="btnRoundWay_Click" /><br />
+     </div>							  	
+     </div>
+     <div class="tab-pane fade" id="holiday" role="tabpanel" aria-labelledby="holiday-tab">
+     <div class="form-wrap">
+     <p style="color:white;font-size:8pt">Please Fill and Submit the Form then we will contact you regarding your package need</p>
+     <asp:TextBox class="form-control" autocomplete="off" placeholder="Your Name" ID="txtPackageName" runat="server"></asp:TextBox>
+     <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtPackageName" Display="Dynamic" ErrorMessage="Please Enter PickUp Location !" SetFocusOnError="True" ValidationGroup="pkg" > <img style="position:absolute;margin-top:-11%;margin-left:32%" src="images/icon/error.png" /></asp:RequiredFieldValidator>
+     <asp:TextBox class="form-control" autocomplete="off" placeholder="Your E-Mail" ID="txtPackageEmail" runat="server"></asp:TextBox>
+     <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtPackageEmail" Display="Dynamic" ErrorMessage="Please Enter PickUp Location !" SetFocusOnError="True" ValidationGroup="pkg" > <img style="position:absolute;margin-top:-11%;margin-left:32%" src="images/icon/error.png" /></asp:RequiredFieldValidator>
+     <asp:TextBox class="form-control" autocomplete="off" MaxLength="10" placeholder="Your Mobile" ID="txtPackageMobile" runat="server"></asp:TextBox>
+     <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="txtPackageMobile" Display="Dynamic" ErrorMessage="Please Enter PickUp Location !" SetFocusOnError="True" ValidationGroup="pkg" > <img style="position:absolute;margin-top:-11%;margin-left:32%" src="images/icon/error.png" /></asp:RequiredFieldValidator>
+     <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender2" runat="server" Enabled="True" FilterType="Numbers" TargetControlID="txtPackageMobile"></cc1:FilteredTextBoxExtender>
+     <asp:TextBox class="form-control" autocomplete="off" placeholder="which place do you plan?" ID="txtPackagePlace" runat="server"></asp:TextBox>
+     <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="txtPackagePlace" Display="Dynamic" ErrorMessage="Please Enter PickUp Location !" SetFocusOnError="True" ValidationGroup="pkg" > <img style="position:absolute;margin-top:-11%;margin-left:44%" src="images/icon/error.png" /></asp:RequiredFieldValidator>
+     <asp:Button ID="btnPackage" OnClick="btnPackage_Click" ValidationGroup="pkg" CssClass="primary-btn text-uppercase" runat="server" Text="Submit" /><br />
+	 </div>							  	
+     </div>
+	 </div>
+    <%--  </form>--%>
+	  </div>
+	  </div>					
+	  </section>
+ 
+     <%-- Welcome Part --%>
+     <section class="ftco-section-2" id="ravi">
+     <div class="container-fluid d-flex">
+     <div class="section-2-blocks-wrapper row no-gutters">
+     <div class="img col-sm-12 col-lg-6">
+     <asp:Image ID="videoImage" runat="server" Width="100%" Height="100%"/>
+     <% 
+     {
+     DataTable dtv = new DataTable();
+     cls_connection cls=new cls_connection ();
+     dtv = cls.select_data_dt("select * from tblWelcomePart");
+     DataRow[] drv = dtv.Select();
+     for (int i = 0; i < drv.Length; i++)
+     {
+     }
+     %>
+     <a href="<% Response.Write(drv[0]["Video"]); %>" class="button popup-vimeo"><span class="ion-ios-play"></span></a>
+     <%}%>
+     </div>
+     <div class="text col-lg-6 ftco-animate">
+     <div class="text-inner align-self-start">
+     <h3><asp:Label ID="lblVideoHeader" runat="server" Text=""></asp:Label></h3>
+     <p>
+     <asp:Label ID="lblVideoDescription" runat="server" Text=""></asp:Label></p>
+     </div>
+     </div>
+     </div>
+     </div>
+     </section>
+     
+     <%-- Flash Sale --%>
+     <section class="ftco-section">
+     <div class="container-fluid">
+     <div class="row no-gutters justify-content-center mb-5 pb-5 ftco-animate">
+     <div class="col-md-7 text-center heading-section">
+     <h2>Our Flash Sale</h2>
+     </div>
+     </div>
+     <div class="row no-gutters">
+     <asp:Repeater ID="repFlashSale" runat="server" >
+     <ItemTemplate>
+     <div class="col-md-6 col-lg-3 ftco-animate">
+     <a href="#" class="block-5" style="background-image: url('<%# "../../images/Flashsale/actual/"+ Eval("Picture")%>');">
+     <div class="text">
+     <span class="price"> <asp:Label ID="lblDays" runat="server" Text='<%# Eval("Amount") %>'></asp:Label></span>
+     <h3 class="heading"><asp:Label ID="Label2" runat="server" Text='<%# Eval("Header") %>'></asp:Label></h3>
+     <div class="post-meta">
+     <span><asp:Label ID="Label3" runat="server" Text='<%# Eval("Description") %>'></asp:Label></span>
+     </div>
+     <p class="star-rate"><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star-half-full"></span> </p>
+     </div>
+     </a>
+     </div>
+     </ItemTemplate>
+     </asp:Repeater>
+     </div>
+     </div>
+     </section>
+
+      <%-- Destination --%>
+     <section class="popular-destination-area section-gap" style="margin-top:-12%">
+	 <div class="container">
+	 <div class="row d-flex justify-content-center">
+	 <div class="menu-content pb-70 col-lg-8">
+	 <div class="title text-center">
+	 <h1 class="mb-10">Popular Destinations</h1>
+	 <p>We all live in an age that belongs to the young at heart. Life that is becoming extremely fast, day.</p>
+	 </div>
+	 </div>
+	 </div>						
+	 <div class="row">
+	 <asp:Repeater ID="repDestination" runat="server" >
+     <ItemTemplate>
+	 <div class="col-lg-4">
+	 <div class="single-destination relative">
+	 <div class="thumb relative">
+	 <div class="overlay overlay-bg"></div>
+     <img class="img-fluid" src='<%# "../../images/Destination/actual/"+ Eval("Picture")%>' alt="" style="width:100%;height:250px">
+	 </div>
+	 <div class="desc">	
+	 <a href="#" class="price-btn">BOOK</a>			
+	 <h4> <asp:Label ID="lblDestinationHeader" runat="server" Text='<%# Eval("Header") %>'></asp:Label></h4>
+	 <p>
+     <asp:Label ID="lblDestinationDesc" runat="server" Text='<%# Eval("Description") %>'></asp:Label></p>			
+	 </div>
+	 </div>
+	 </div>
+	 </ItemTemplate>
+     </asp:Repeater>		
+     </div>
+	 </div>	
+	 </section>
+
+     <%-- Why CHoose Us (Services) --%>
+     <section class="popular-destination-area section-gap" style="margin-top:-12%">
+	<div class="container">
+	<div class="row d-flex justify-content-center">
+	<div class="menu-content pb-70 col-lg-8">
+	<div class="title text-center">
+	<h1 class="mb-10">Why Choose Us</h1>
+	<p>Our Service is so Effective, Affordable and Reality</p>
+	</div>
+	</div>
+	</div>			
+    <div class="row">	
+    <asp:Repeater ID="repService" runat="server" >
+    <ItemTemplate>		
+	<div class="col-md-3">
+    <div class="row">
+    <asp:Image ImageUrl='<%# "../../images/Services/actual/"+ Eval("Picture")%>' ID="Image1" runat="server" style="margin:auto"/>
+    </div>   
+    <div class="row">
+        <center>
+    <h3 style="margin:auto"><asp:Label ID="Label4" runat="server" Text='<%# Eval("Header") %>'></asp:Label></h3>
+    <p style="margin:auto;text-align:center;font-size:10pt;width:80%"><asp:Label ID="Label5" runat="server" Text='<%# Eval("Description") %>'></asp:Label></p>
+            </center>
+    </div>                     								
+	</div>
+    </ItemTemplate>
+    </asp:Repeater>
+    </div>
+	</div>	
+	</section>
+
+
+      <%-- Routes --%>
+    <section class="popular-destination-area section-gap" style="margin-top:-12%">
+	<div class="container">
+	<div class="row d-flex justify-content-center">
+	<div class="menu-content pb-70 col-lg-8">
+	<div class="title text-center">
+	<h1 class="mb-10">Routes</h1>
+	<p>We provide the Taxi for the following Routes</p>
+	</div>
+	</div>
+	</div>		
+    <div class="row" style="color:black !important">
+    <asp:Repeater ID="repRoutes" runat="server" >
+    <ItemTemplate>
+	<div class="col-md-2"><a href="#"><p><asp:Label ID="lblMenu1" runat="server" Text='<%# Eval("Routes") %>'></asp:Label></p></a></div>
+    </ItemTemplate>
+    </asp:Repeater>
+    </div>				
+	</div>	
+	</section>
+
+
+    <%-- Cities --%>
+    <section class="popular-destination-area section-gap" style="margin-top:-12%">
+    <div class="container">
+	<div class="row d-flex justify-content-center">
+	<div class="menu-content pb-70 col-lg-8">
+	<div class="title text-center">
+	<h1 class="mb-10">Cities</h1>
+	<p>Hire your cab across india</p>
+	</div>
+	</div>
+	</div>		
+    <div class="row" style="color:black !important">
+    <asp:Repeater ID="repCities" runat="server" >
+    <ItemTemplate>
+	<div class="col-md-2"><a href="#"><p><asp:Label ID="lblMenu" runat="server" Text='<%# Eval("Cities") %>'></asp:Label></p></a></div>
+    </ItemTemplate>
+    </asp:Repeater>
+    </div>				
+	</div>	
+	</section>
+</asp:Content>
+

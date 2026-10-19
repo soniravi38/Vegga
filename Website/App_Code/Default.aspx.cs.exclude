@@ -1,0 +1,265 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using Common;
+using System.Data;
+using BLL;
+using System.Net;
+using System.Data.SqlClient;
+using System.Collections.Specialized;
+
+public partial class web_Default : System.Web.UI.Page
+{
+    #region [properties]
+    DataTable dt = new DataTable();
+    DataTable dtUp = new DataTable();
+    DataTable dtRegister = new DataTable();
+    DataTable dtAPI = new DataTable();
+    cls_connection cls = new cls_connection();
+    clsImageResize objImageResize = new clsImageResize();
+    #endregion
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        FillCountryCode();
+        FillVideo();
+        FillMainSlider();
+        FillFlashSale();
+        FillDestination();
+        FillService();
+        FillCities();
+        FillRoutes();
+    }
+   
+    public void FillCountryCode()
+    {
+        DataTable dt = new DataTable();
+        dt = cls.select_data_dt("Exec Proc_CountryCode 'GetAll1','',''");
+        ddlCountryCode.DataSource = dt;
+        ddlCountryCode.DataValueField = "ID";
+        ddlCountryCode.DataTextField = "CountryCode";
+        ddlCountryCode.DataBind();
+        ddlCountryCode1.DataSource = dt;
+        ddlCountryCode1.DataValueField = "ID";
+        ddlCountryCode1.DataTextField = "CountryCode";
+        ddlCountryCode1.DataBind();
+
+        
+    }
+    
+     private void FillMainSlider()
+     {
+         dt = cls.select_data_dt("Exec Proc_MainSlider 'GetAll1','','','',''");
+         if (dt.Rows.Count > 0)
+         {
+             DataView dv1 = dt.DefaultView;
+             DataTable dtNew = dv1.ToTable();
+             repMainSlider.DataSource = dtNew.DefaultView;
+             repMainSlider.DataBind();
+         }
+     }
+
+     private void Clear()
+     {
+         txtOneSource.Text = "";
+         txtOneDestination.Text = "";
+         txtOneMobile.Text = "";
+         txtOnePickupDate.Text = "";
+         txtPackageEmail.Text = "";
+         txtPackageMobile.Text = "";
+         txtPackageName.Text = "";
+         txtPackagePlace.Text = "";
+         txtRoundDestination.Text = "";
+         txtRoundMobile.Text = "";
+         txtRoundPickupDate.Text = "";
+         txtRoundReturnDate.Text = "";
+         txtRoundSource.Text = "";
+     }
+
+     private void FillVideo()
+     {
+         dt = cls.select_data_dt("Exec Proc_WelcomePart 'GetAll','','','',''");
+         if (dt.Rows.Count > 0)
+         {
+             videoImage.ImageUrl = "../../images/WelcomePicture/actual/" + Convert.ToString(dt.Rows[0]["Picture"]);
+             lblVideoHeader.Text = Convert.ToString(dt.Rows[0]["Header"]);
+             lblVideoDescription.Text = Convert.ToString(dt.Rows[0]["Description"]);
+         }
+     }
+     private void FillFlashSale()
+     {
+         dt = cls.select_data_dt("Exec Proc_FlashSale 'GetAll1','','','','',''");
+         if (dt.Rows.Count > 0)
+         {
+             DataView dv1 = dt.DefaultView;
+             DataTable dtNew = dv1.ToTable();
+             repFlashSale.DataSource = dtNew.DefaultView;
+             repFlashSale.DataBind();
+         }
+     }
+     private void FillDestination()
+     {
+         dt = cls.select_data_dt("Exec Proc_Destination 'GetAll1','','','',''");
+         if (dt.Rows.Count > 0)
+         {
+             DataView dv1 = dt.DefaultView;
+             DataTable dtNew = dv1.ToTable();
+             repDestination.DataSource = dtNew.DefaultView;
+             repDestination.DataBind();
+         }
+     }
+     private void FillService()
+     {
+         dt = cls.select_data_dt("Exec Proc_Services 'GetAll1','','','',''");
+         if (dt.Rows.Count > 0)
+         {
+             DataView dv1 = dt.DefaultView;
+             DataTable dtNew = dv1.ToTable();
+             repService.DataSource = dtNew.DefaultView;
+             repService.DataBind();
+         }
+     }
+     protected void btnOneWay_Click(object sender, EventArgs e)
+     {
+        dt = cls.select_data_dt("Proc_MobileSMS 'GetAll',''");
+        string destinationaddr = dt.Rows[0]["Mobile"].ToString();
+        dtAPI = cls.select_data_dt("Proc_SMSApi 'GetAll',''");
+        string smsAPI = dtAPI.Rows[0]["Api"].ToString();
+        string message = "Someone Search ONE WAY TAXI!" + Environment.NewLine + "PICKUP : " + txtOneSource.Text + Environment.NewLine + "DROP-OFF : " + txtOneDestination.Text + Environment.NewLine + "PICKUP-DATE : " + txtOnePickupDate.Text + Environment.NewLine + "MOBILE : " + Convert.ToString(ddlCountryCode.SelectedItem) + "" + txtOneMobile.Text + "";
+        String message1 = HttpUtility.UrlEncode(message);
+        using (var wb = new WebClient())
+        {
+            byte[] response = wb.UploadValues("https://api.textlocal.in/send/", new NameValueCollection()
+                {
+                {"apikey" , smsAPI},
+                {"numbers" , destinationaddr},
+                {"message" , message},
+                {"sender" , "TXTLCL"}
+                });
+            string result = System.Text.Encoding.UTF8.GetString(response);
+        }
+         
+         int intresult = 0;
+         intresult = cls.insert_data("Proc_MainSearch 'Insert','','" + txtOneSource.Text + "','" + txtOneDestination.Text + "','" + txtOnePickupDate.Text + "','" + ddlCountryCode.SelectedItem.Text + "','" + txtOneMobile.Text + "'");
+         if (intresult > 0)
+         {
+
+         int VehicleCount = 0;
+         VehicleCount = cls.select_data_scalar_int("select count(*) from tblVehicle where IsDelete=0 and IsActive=1");
+         int count = 0;
+         count = cls.select_data_scalar_int("select count(*) from OneTripFare where [From]='"+txtOneSource.Text.ToString()+"'and [To]='"+txtOneDestination.Text.ToString()+"'");
+         if(count>=VehicleCount)
+         {
+         System.Threading.Thread.Sleep(5000);
+         Session["OneFrom"] = txtOneSource.Text.ToString();
+         Session["OneTo"] = txtOneDestination.Text.ToString();
+         Session["PickDate"] = txtOnePickupDate.Text.ToString();
+         Session["oneMobile"] = txtOneMobile.Text.ToString();
+         Response.Redirect("OneWayRoutes.aspx");
+         }
+         else
+         {
+         Response.Redirect("SpecialRoutes.aspx");
+         }
+
+         }
+     }
+     private void FillRoutes()
+     {
+         dt = cls.select_data_dt("Exec Proc_Routes 'GetAll1','',''");
+         if (dt.Rows.Count > 0)
+         {
+             DataView dv1 = dt.DefaultView;
+             DataTable dtNew = dv1.ToTable();
+             repRoutes.DataSource = dtNew.DefaultView;
+             repRoutes.DataBind();
+         }
+     }
+     private void FillCities()
+     {
+         dt = cls.select_data_dt("Exec Proc_Cities 'GetAll1','',''");
+         if (dt.Rows.Count > 0)
+         {
+             DataView dv1 = dt.DefaultView;
+             DataTable dtNew = dv1.ToTable();
+             repCities.DataSource = dtNew.DefaultView;
+             repCities.DataBind();
+         }
+     }
+
+     protected void btnRoundWay_Click(object sender, EventArgs e)
+     {
+         dt = cls.select_data_dt("Proc_MobileSMS 'GetAll',''");
+         string destinationaddr = dt.Rows[0]["Mobile"].ToString();
+         dtAPI = cls.select_data_dt("Proc_SMSApi 'GetAll',''");
+         string smsAPI = dtAPI.Rows[0]["Api"].ToString();
+         string message = "Someone Search ROUND WAY TAXI!" + Environment.NewLine + "PICKUP : " + txtRoundSource.Text + Environment.NewLine + "DROP-OFF : " + txtRoundDestination.Text + Environment.NewLine + "PICKUP-DATE : " + txtRoundPickupDate.Text + Environment.NewLine + "RETURN-DATE : " + txtRoundReturnDate.Text + Environment.NewLine + "MOBILE : " + Convert.ToString(ddlCountryCode.SelectedItem) + "" + txtRoundMobile.Text + "";
+         String message1 = HttpUtility.UrlEncode(message);
+         using (var wb = new WebClient())
+         {
+             byte[] response = wb.UploadValues("https://api.textlocal.in/send/", new NameValueCollection()
+                {
+                {"apikey" , smsAPI},
+                {"numbers" , destinationaddr},
+                {"message" , message},
+                {"sender" , "TXTLCL"}
+                });
+             string result = System.Text.Encoding.UTF8.GetString(response);
+         }
+
+         int intresult = 0;
+         intresult = cls.insert_data("Proc_RoundMainSearch 'Insert','','" + txtRoundSource.Text + "','" + txtRoundDestination.Text + "','" + txtRoundPickupDate.Text + "','"+txtRoundReturnDate.Text+"','" + ddlCountryCode1.SelectedItem.Text + "','" + txtRoundMobile.Text + "'");
+         if (intresult > 0)
+         {
+             int VehicleCount = 0;
+             VehicleCount = cls.select_data_scalar_int("select count(*) from tblVehicle where IsDelete=0 and IsActive=1");
+             int count = 0;
+             count = cls.select_data_scalar_int("select count(*) from OneTripFare where [From]='" + txtRoundSource.Text.ToString() + "'and [To]='" + txtRoundDestination.Text.ToString() + "'");
+             if (count >= VehicleCount)
+             {
+                 System.Threading.Thread.Sleep(5000);
+                 Session["RoundFrom"] = txtRoundSource.Text.ToString();
+                 Session["RoundTo"] = txtRoundDestination.Text.ToString();
+                 Session["RoundPickDate"] = txtRoundPickupDate.Text.ToString();
+                 Session["RoundReturnDate"] = txtRoundReturnDate.Text.ToString();
+                 Response.Redirect("RoundWayRoutes.aspx");
+             }
+             else
+             {
+                 Response.Redirect("SpecialRoutes.aspx");
+             }
+
+         }
+     }
+     protected void btnPackage_Click(object sender, EventArgs e)
+     {
+         dt = cls.select_data_dt("Proc_MobileSMS 'GetAll',''");
+         string destinationaddr = dt.Rows[0]["Mobile"].ToString();
+         dtAPI = cls.select_data_dt("Proc_SMSApi 'GetAll',''");
+         string smsAPI = dtAPI.Rows[0]["Api"].ToString();
+         string message = "Someone Search PACKAGES!"+ Environment.NewLine+"NAME : " + txtPackageName.Text + Environment.NewLine + "EMAIL : " + txtPackageEmail.Text + Environment.NewLine + "MOBILE : " + txtPackageMobile.Text + Environment.NewLine + "PLACE : " + txtPackagePlace.Text + "";
+         String message1 = HttpUtility.UrlEncode(message);
+         using (var wb = new WebClient())
+         {
+             byte[] response = wb.UploadValues("https://api.textlocal.in/send/", new NameValueCollection()
+                {
+                {"apikey" , smsAPI},
+                {"numbers" , destinationaddr},
+                {"message" , message},
+                {"sender" , "TXTLCL"}
+                });
+             string result = System.Text.Encoding.UTF8.GetString(response);
+         }
+
+         int intPackages;
+         intPackages = cls.insert_data("Proc_PackageForm 'Insert','','" + txtPackageName.Text + "','" + txtPackageEmail.Text + "','" + txtPackageMobile.Text + "','" + txtPackagePlace.Text + "',''");
+         if (intPackages > 0)
+         {
+             Response.Write("<script>alert('Your Form has been Submitted ! we will contact you soon')</script>");
+             Clear();
+         }
+     }
+}

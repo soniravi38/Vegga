@@ -1,0 +1,120 @@
+G:\MLM_Project\Malaya Project\BLL\bin\Debug\BLL.dll
+G:\MLM_Project\Malaya Project\BLL\bin\Debug\BLL.pdb
+G:\MLM_Project\Malaya Project\BLL\bin\Debug\DAL.dll
+G:\MLM_Project\Malaya Project\BLL\bin\Debug\DAL.pdb
+G:\MLM_Project\Malaya Project\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+G:\MLM_Project\Malaya Project\BLL\obj\Debug\BLL.dll
+G:\MLM_Project\Malaya Project\BLL\obj\Debug\BLL.pdb
+E:\MalayaProject\BLL\bin\Debug\BLL.dll
+E:\MalayaProject\BLL\bin\Debug\BLL.pdb
+E:\MalayaProject\BLL\bin\Debug\DAL.dll
+E:\MalayaProject\BLL\bin\Debug\DAL.pdb
+E:\MalayaProject\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+E:\MalayaProject\BLL\obj\Debug\BLL.dll
+E:\MalayaProject\BLL\obj\Debug\BLL.pdb
+E:\ShoppyCraft_mlm\BLL\bin\Debug\BLL.dll
+E:\ShoppyCraft_mlm\BLL\bin\Debug\BLL.pdb
+E:\ShoppyCraft_mlm\BLL\bin\Debug\DAL.dll
+E:\ShoppyCraft_mlm\BLL\bin\Debug\DAL.pdb
+E:\ShoppyCraft_mlm\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+E:\ShoppyCraft_mlm\BLL\obj\Debug\BLL.dll
+E:\ShoppyCraft_mlm\BLL\obj\Debug\BLL.pdb
+D:\Aixxo_mlm\BLL\bin\Debug\BLL.dll
+D:\Aixxo_mlm\BLL\bin\Debug\BLL.pdb
+D:\Aixxo_mlm\BLL\bin\Debug\DAL.dll
+D:\Aixxo_mlm\BLL\bin\Debug\DAL.pdb
+D:\Aixxo_mlm\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+D:\Aixxo_mlm\BLL\obj\Debug\BLL.dll
+D:\Aixxo_mlm\BLL\obj\Debug\BLL.pdb
+E:\Aixxo_mlm\BLL\bin\Debug\BLL.dll
+E:\Aixxo_mlm\BLL\bin\Debug\BLL.pdb
+E:\Aixxo_mlm\BLL\bin\Debug\DAL.dll
+E:\Aixxo_mlm\BLL\bin\Debug\DAL.pdb
+E:\Aixxo_mlm\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+E:\Aixxo_mlm\BLL\obj\Debug\BLL.dll
+E:\Aixxo_mlm\BLL\obj\Debug\BLL.pdb
+F:\New Transfer\aducation\Sigmatech\Aixxo_mlm\BLL\bin\Debug\BLL.dll
+F:\New Transfer\aducation\Sigmatech\Aixxo_mlm\BLL\bin\Debug\BLL.pdb
+F:\New Transfer\aducation\Sigmatech\Aixxo_mlm\BLL\bin\Debug\DAL.dll
+F:\New Transfer\aducation\Sigmatech\Aixxo_mlm\BLL\bin\Debug\DAL.pdb
+F:\New Transfer\aducation\Sigmatech\Aixxo_mlm\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+F:\New Transfer\aducation\Sigmatech\Aixxo_mlm\BLL\obj\Debug\BLL.dll
+F:\New Transfer\aducation\Sigmatech\Aixxo_mlm\BLL\obj\Debug\BLL.pdb
+F:\New Transfer\aducation\Sigmatech\Projects\ASP.NET\Sigmatech\BLL\bin\Debug\BLL.dll
+F:\New Transfer\aducation\Sigmatech\Projects\ASP.NET\Sigmatech\BLL\bin\Debug\BLL.pdb
+F:\New Transfer\aducation\Sigmatech\Projects\ASP.NET\Sigmatech\BLL\bin\Debug\DAL.dll
+F:\New Transfer\aducation\Sigmatech\Projects\ASP.NET\Sigmatech\BLL\bin\Debug\DAL.pdb
+F:\New Transfer\aducation\Sigmatech\Projects\ASP.NET\Sigmatech\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+F:\New Transfer\aducation\Sigmatech\Projects\ASP.NET\Sigmatech\BLL\obj\Debug\BLL.dll
+F:\New Transfer\aducation\Sigmatech\Projects\ASP.NET\Sigmatech\BLL\obj\Debug\BLL.pdb
+F:\New Transfer\aducation\Tilak\Website\BookMyTravels\BLL\bin\Debug\BLL.dll
+F:\New Transfer\aducation\Tilak\Website\BookMyTravels\BLL\bin\Debug\BLL.pdb
+F:\New Transfer\aducation\Tilak\Website\BookMyTravels\BLL\bin\Debug\DAL.dll
+F:\New Transfer\aducation\Tilak\Website\BookMyTravels\BLL\bin\Debug\DAL.pdb
+F:\New Transfer\aducation\Tilak\Website\BookMyTravels\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+F:\New Transfer\aducation\Tilak\Website\BookMyTravels\BLL\obj\Debug\BLL.dll
+F:\New Transfer\aducation\Tilak\Website\BookMyTravels\BLL\obj\Debug\BLL.pdb
+F:\New Transfer\aducation\Tilak\Website\JaipurTaxi\BLL\bin\Debug\BLL.dll
+F:\New Transfer\aducation\Tilak\Website\JaipurTaxi\BLL\bin\Debug\BLL.pdb
+F:\New Transfer\aducation\Tilak\Website\JaipurTaxi\BLL\bin\Debug\DAL.dll
+F:\New Transfer\aducation\Tilak\Website\JaipurTaxi\BLL\bin\Debug\DAL.pdb
+F:\New Transfer\aducation\Tilak\Website\JaipurTaxi\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+F:\New Transfer\aducation\Tilak\Website\JaipurTaxi\BLL\obj\Debug\BLL.dll
+F:\New Transfer\aducation\Tilak\Website\JaipurTaxi\BLL\obj\Debug\BLL.pdb
+F:\New Transfer\aducation\Tilak\Website\GoIndiaTaxi\BLL\bin\Debug\BLL.dll
+F:\New Transfer\aducation\Tilak\Website\GoIndiaTaxi\BLL\bin\Debug\BLL.pdb
+F:\New Transfer\aducation\Tilak\Website\GoIndiaTaxi\BLL\bin\Debug\DAL.dll
+F:\New Transfer\aducation\Tilak\Website\GoIndiaTaxi\BLL\bin\Debug\DAL.pdb
+F:\New Transfer\aducation\Tilak\Website\GoIndiaTaxi\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+F:\New Transfer\aducation\Tilak\Website\GoIndiaTaxi\BLL\obj\Debug\BLL.dll
+F:\New Transfer\aducation\Tilak\Website\GoIndiaTaxi\BLL\obj\Debug\BLL.pdb
+F:\New Content\aducation\Tilak\Website\GoIndiaTaxi\BLL\bin\Debug\BLL.dll
+F:\New Content\aducation\Tilak\Website\GoIndiaTaxi\BLL\bin\Debug\BLL.pdb
+F:\New Content\aducation\Tilak\Website\GoIndiaTaxi\BLL\bin\Debug\DAL.dll
+F:\New Content\aducation\Tilak\Website\GoIndiaTaxi\BLL\bin\Debug\DAL.pdb
+F:\New Content\aducation\Tilak\Website\GoIndiaTaxi\BLL\bin\Debug\DAL.dll.config
+F:\New Content\aducation\Tilak\Website\GoIndiaTaxi\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+F:\New Content\aducation\Tilak\Website\GoIndiaTaxi\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+F:\New Content\aducation\Tilak\Website\GoIndiaTaxi\BLL\obj\Debug\BLL.csproj.CopyComplete
+F:\New Content\aducation\Tilak\Website\GoIndiaTaxi\BLL\obj\Debug\BLL.dll
+F:\New Content\aducation\Tilak\Website\GoIndiaTaxi\BLL\obj\Debug\BLL.pdb
+F:\New Transfer\aducation\Vegga\BLL\bin\Debug\BLL.dll
+F:\New Transfer\aducation\Vegga\BLL\bin\Debug\BLL.pdb
+F:\New Transfer\aducation\Vegga\BLL\bin\Debug\DAL.dll
+F:\New Transfer\aducation\Vegga\BLL\bin\Debug\DAL.pdb
+F:\New Transfer\aducation\Vegga\BLL\bin\Debug\DAL.dll.config
+F:\New Transfer\aducation\Vegga\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+F:\New Transfer\aducation\Vegga\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+F:\New Transfer\aducation\Vegga\BLL\obj\Debug\BLL.csproj.CopyComplete
+F:\New Transfer\aducation\Vegga\BLL\obj\Debug\BLL.dll
+F:\New Transfer\aducation\Vegga\BLL\obj\Debug\BLL.pdb
+F:\New Transfer\aducation\Vegga\Web\BLL\bin\Debug\BLL.dll
+F:\New Transfer\aducation\Vegga\Web\BLL\bin\Debug\BLL.pdb
+F:\New Transfer\aducation\Vegga\Web\BLL\bin\Debug\DAL.dll
+F:\New Transfer\aducation\Vegga\Web\BLL\bin\Debug\DAL.pdb
+F:\New Transfer\aducation\Vegga\Web\BLL\bin\Debug\DAL.dll.config
+F:\New Transfer\aducation\Vegga\Web\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+F:\New Transfer\aducation\Vegga\Web\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+F:\New Transfer\aducation\Vegga\Web\BLL\obj\Debug\BLL.csproj.CopyComplete
+F:\New Transfer\aducation\Vegga\Web\BLL\obj\Debug\BLL.dll
+F:\New Transfer\aducation\Vegga\Web\BLL\obj\Debug\BLL.pdb
+G:\New\education\Vegga\Web\BLL\bin\Debug\BLL.dll
+G:\New\education\Vegga\Web\BLL\bin\Debug\BLL.pdb
+G:\New\education\Vegga\Web\BLL\bin\Debug\DAL.dll
+G:\New\education\Vegga\Web\BLL\bin\Debug\DAL.pdb
+G:\New\education\Vegga\Web\BLL\bin\Debug\DAL.dll.config
+G:\New\education\Vegga\Web\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+G:\New\education\Vegga\Web\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+G:\New\education\Vegga\Web\BLL\obj\Debug\BLL.csproj.CopyComplete
+G:\New\education\Vegga\Web\BLL\obj\Debug\BLL.dll
+G:\New\education\Vegga\Web\BLL\obj\Debug\BLL.pdb
+G:\Work -)\Vegga\Web\BLL\bin\Debug\BLL.dll
+G:\Work -)\Vegga\Web\BLL\bin\Debug\BLL.pdb
+G:\Work -)\Vegga\Web\BLL\bin\Debug\DAL.dll
+G:\Work -)\Vegga\Web\BLL\bin\Debug\DAL.pdb
+G:\Work -)\Vegga\Web\BLL\bin\Debug\DAL.dll.config
+G:\Work -)\Vegga\Web\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+G:\Work -)\Vegga\Web\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+G:\Work -)\Vegga\Web\BLL\obj\Debug\BLL.csproj.CopyComplete
+G:\Work -)\Vegga\Web\BLL\obj\Debug\BLL.dll
+G:\Work -)\Vegga\Web\BLL\obj\Debug\BLL.pdb

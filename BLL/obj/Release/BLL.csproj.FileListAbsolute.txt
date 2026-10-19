@@ -1,0 +1,10 @@
+G:\New\education\Vegga\Web\BLL\bin\Release\BLL.dll
+G:\New\education\Vegga\Web\BLL\bin\Release\BLL.pdb
+G:\New\education\Vegga\Web\BLL\bin\Release\DAL.dll
+G:\New\education\Vegga\Web\BLL\bin\Release\DAL.pdb
+G:\New\education\Vegga\Web\BLL\bin\Release\DAL.dll.config
+G:\New\education\Vegga\Web\BLL\obj\Release\BLL.csprojAssemblyReference.cache
+G:\New\education\Vegga\Web\BLL\obj\Release\BLL.csproj.CoreCompileInputs.cache
+G:\New\education\Vegga\Web\BLL\obj\Release\BLL.csproj.CopyComplete
+G:\New\education\Vegga\Web\BLL\obj\Release\BLL.dll
+G:\New\education\Vegga\Web\BLL\obj\Release\BLL.pdb
